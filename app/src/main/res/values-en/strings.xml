@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="texto1">Enter a text string</string>
+    <string name="app_name">Final Project</string>
+    <string name="texto2">Input other string</string>
+    <string name="boton_comparar">Compare</string>
+    <string name="textoigual">The entered strings are EQUAL</string>
+    <string name="textodiferente">The entered strings are DIFFERENT</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+    <string name="modo_oscuro">Dark Mode</string>
+    <string name="idioma_spa">Spanish</string>
+    <string name="idioma_eng">English</string>
+    <string name="salir">Exit</string>
+    <string name="titulo_idioma">Language</string>
+    <string name="esp_eng">Spanish / English</string>
+    <string name="claro_oscuro">Light Mode / Dark Mode</string>
+    <string name="tema_theme">Theme</string>
+    <string name="idiomas">Languages</string>
+        <array name="idiomastodos">
+            <item>Spanish</item>
+            <item>English</item>
+        </array>
+    <string name="btnGuardarIdioma">Save</string>
+</resources>

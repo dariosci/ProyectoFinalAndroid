@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="texto1">Ingrese una cadena de texto</string>
+    <string name="app_name">Proyecto Final</string>
+    <string name="texto2">Ingrese otra cadena de texto</string>
+    <string name="boton_comparar">Comparar</string>
+    <string name="textoigual">Las cadenas ingresadas son IGUALES</string>
+    <string name="textodiferente">Las cadenas ingresadas son DIFERENTES</string>
+    <string name="title_activity_settings">Configuración</string>
+    <string name="messages_header">Mensajes</string>
+    <string name="sync_header">Sincronizar</string>
+    <string name="signature_title">Firma</string>
+    <string name="reply_title">Acción de respuesta predeterminada</string>
+    <string name="modo_oscuro">Modo Oscuro</string>
+    <string name="idioma_spa">Español</string>
+    <string name="idioma_eng">Inglés</string>
+    <string name="salir">Salir</string>
+    <string name="titulo_idioma">Idioma</string>
+    <string name="esp_eng">Español / Inglés</string>
+    <string name="claro_oscuro">Modo Claro / Modo Oscuro</string>
+    <string name="tema_theme">Tema</string>
+    <string name="idiomas">Idiomas</string>
+        <array name="idiomastodos">
+            <item>Español</item>
+            <item>Inglés</item>
+        </array>
+    <string name="btnGuardarIdioma">Guardar</string>
+</resources>

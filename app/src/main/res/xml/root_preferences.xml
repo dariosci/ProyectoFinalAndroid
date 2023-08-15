@@ -1,0 +1,18 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/titulo_idioma">
+
+        <SwitchPreferenceCompat
+            app:key="idioma"
+            app:title="@string/esp_eng" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/tema_theme">
+
+        <SwitchPreferenceCompat
+            app:key="tema"
+            app:title="@string/claro_oscuro" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
