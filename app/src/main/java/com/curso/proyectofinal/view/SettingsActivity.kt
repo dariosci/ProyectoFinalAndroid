@@ -20,8 +20,6 @@ class SettingsActivity : AppCompatActivity() {
         val selectoridioma = findViewById<AppCompatSpinner>(R.id.selectoridioma)
         val btn_Guardar: Button = findViewById(R.id.guardarIdioma)
 
-
-
         //IDIOMA
         val sharedPref = application.getSharedPreferences("idioma",Context.MODE_PRIVATE) ?:return //prueba
         val defaultValue = 0
@@ -43,37 +41,34 @@ class SettingsActivity : AppCompatActivity() {
 
         //MODO CLARO/OSCURO
         val switch = findViewById<SwitchCompat>(R.id.clarooscuro)
-
         val sharedPreferences = application.getSharedPreferences("modo", Context.MODE_PRIVATE) ?:return
         val editor = sharedPreferences.edit()
         val nightMode = sharedPreferences.getBoolean("night",false)
 
+        //SI MODO OSCURO ESTÁ ACTIVADO... MOSTRAR EN EL SWITCH
         if (nightMode){
             switch.isChecked = true
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
-
+        //AL PRESIONAR EL SWITCH ACTIVA EL CAMBIO Y GUARDA EL MODO SELECCIONADO
         switch.setOnCheckedChangeListener { buttonView, isChecked ->
-
-            if (!isChecked){
+            if (!isChecked){ //MODO CLARO
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 editor.putBoolean("night", false)
                 editor.apply()
-            }else{
+            }else{          //MODO OSCURO
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 editor.putBoolean("night",true)
                 editor.apply()
             }
             Toast.makeText(this,"El Modo Claro/Oscuro se guarda automáticamente",Toast.LENGTH_SHORT).show()
         }
-
-
+        //GUARDAR/APLICAR CONFIGURACIÓN DEL IDIOMA
         btn_Guardar.setOnClickListener{
-
             guardar(selectoridioma)
             Toast.makeText(this,"Se ha guardado la Configuración",Toast.LENGTH_SHORT).show()
-
             when(selectoridioma?.selectedItem){
+                //APLICANDO IDIOMA EN INGLÉS
                 "English" -> {
                     val appLocale : LocaleListCompat = LocaleListCompat.forLanguageTags("en-EN")
                     AppCompatDelegate.setApplicationLocales(appLocale)
@@ -82,6 +77,7 @@ class SettingsActivity : AppCompatActivity() {
                     val appLocale : LocaleListCompat = LocaleListCompat.forLanguageTags("en-EN")
                     AppCompatDelegate.setApplicationLocales(appLocale)
                 }
+                //APLICANDO IDIOMA EN ESPAÑOL
                 "Español" -> {
                     val appLocale : LocaleListCompat = LocaleListCompat.forLanguageTags("es-ES")
                    AppCompatDelegate.setApplicationLocales(appLocale)
@@ -92,12 +88,9 @@ class SettingsActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
     @SuppressLint("SuspiciousIndentation")
-    fun guardar(selectoridioma:AppCompatSpinner){
-
+    fun guardar(selectoridioma:AppCompatSpinner){ //GUARDAR EL IDIOMA SELECCIONADO PARA LA PROXIMA EJECUCIÓN
         val sharedPref = application.getSharedPreferences("idioma", Context.MODE_PRIVATE) ?: return
         val ididioma = selectoridioma.selectedItemId.toString().toInt()
             with(sharedPref.edit()) {

@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //DECLARACIÓN DE COMPONENTES DE LA UI
         //val btnComparar = findViewById<AppCompatButton>(R.id.btnComparar)
         val texto1 = findViewById<AppCompatEditText>(R.id.texto1)
         val texto2 = findViewById<AppCompatEditText>(R.id.texto2)
@@ -36,34 +37,29 @@ class MainActivity : AppCompatActivity() {
             binding.resultComp.text = it.resultado
         }
 
-
-
-        //IDIOMA
+        //TRAE EL IDOMA GUARDADO PARA APLICAR
         val sharedPref = application.getSharedPreferences("idioma",Context.MODE_PRIVATE) ?:return
         val defaultValue = 0
         val idiomaGuardado = sharedPref.getInt("idioma",defaultValue)
 
-        when(idiomaGuardado) {
-            0 -> {
+        when(idiomaGuardado) { //APLICA EL QUE CORRESPONDA
+            0 -> { //IDIOMA EN INGLÉS
                 val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("es-ES")
                 AppCompatDelegate.setApplicationLocales(appLocale)
                 //selectoridioma.setSelection(idiomaGuardado)
             }
-
-            1 -> {
+            1 -> { //IDIOMA EN ESPAÑOL
                 val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("en-EN")
                 AppCompatDelegate.setApplicationLocales(appLocale)
                 //selectoridioma.setSelection(idiomaGuardado)
             }
         }
-
-        //MODO CLARO/OSCURO
+        //TRAE EL MODO CLARO/OSCURO GUARDADO
         val sharedPreferences = application.getSharedPreferences("modo", Context.MODE_PRIVATE) ?:return
         val nightMode = sharedPreferences.getBoolean("night",false)
-        if (nightMode){
+        if (nightMode){ //APLICA
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
-
         //COMPARACION DE LOS TEXTOS
         binding.btnComparar.setOnClickListener{
             mainViewModel.comparar(texto1.text.toString(), texto2.text.toString())
@@ -72,25 +68,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean { //MENU EN EL ACTIONBAR
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean { //ACCION DE LOS BOTONES/ITEMS DEL MENU
         when(item.itemId){
-            R.id.configurar -> abrir_config()
-            R.id.accion_salir -> finishAffinity()
+            R.id.configurar -> abrir_config() //ABRE CONFIGURACION
+            R.id.accion_salir -> finishAffinity() //SALIR DE LA APLICACIÓN
         }
         return super.onOptionsItemSelected(item)
-
-
     }
-    fun abrir_config(){
+    fun abrir_config(){ //INICIA LA ACTIVITY DE CONFIGURACIÓN
         val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
-
-
-
 }
