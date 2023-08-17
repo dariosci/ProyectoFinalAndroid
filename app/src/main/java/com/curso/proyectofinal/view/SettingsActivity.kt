@@ -1,5 +1,6 @@
-package com.curso.proyectofinal
+package com.curso.proyectofinal.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.widget.Button
@@ -7,9 +8,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatSpinner
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.os.LocaleListCompat
+import com.curso.proyectofinal.R
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -18,14 +19,13 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.settings_activity)
         val selectoridioma = findViewById<AppCompatSpinner>(R.id.selectoridioma)
         val btn_Guardar: Button = findViewById(R.id.guardarIdioma)
-        val pruebaidioma = findViewById<AppCompatTextView>(R.id.pruebaidioma)
+
+
 
         //IDIOMA
         val sharedPref = application.getSharedPreferences("idioma",Context.MODE_PRIVATE) ?:return //prueba
         val defaultValue = 0
         val idiomaGuardado = sharedPref.getInt("idioma",defaultValue)
-
-        pruebaidioma?.setText(idiomaGuardado.toString())
 
         when(idiomaGuardado) {
             0 -> {
@@ -64,7 +64,7 @@ class SettingsActivity : AppCompatActivity() {
                 editor.putBoolean("night",true)
                 editor.apply()
             }
-            Toast.makeText(this,"Se ha guardado el MODO",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"El Modo Claro/Oscuro se guarda automáticamente",Toast.LENGTH_SHORT).show()
         }
 
 
@@ -91,25 +91,11 @@ class SettingsActivity : AppCompatActivity() {
                     AppCompatDelegate.setApplicationLocales(appLocale)
                 }
             }
-
-//            if (!switch.isChecked){
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//                val sharedPreferences = application.getSharedPreferences("modo", Context.MODE_PRIVATE)
-//                val editor = sharedPreferences.edit()
-//                editor.putBoolean("night", false)
-//                editor.apply()
-//
-//            }else{
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//                val sharedPreferences = application.getSharedPreferences("modo", Context.MODE_PRIVATE)
-//                val editor = sharedPreferences.edit()
-//                editor.putBoolean("night",true)
-//                editor.apply()
-//            }
         }
 
 
     }
+    @SuppressLint("SuspiciousIndentation")
     fun guardar(selectoridioma:AppCompatSpinner){
 
         val sharedPref = application.getSharedPreferences("idioma", Context.MODE_PRIVATE) ?: return

@@ -1,28 +1,42 @@
-package com.curso.proyectofinal
+package com.curso.proyectofinal.view
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.os.LocaleListCompat
+import com.curso.proyectofinal.R
+import com.curso.proyectofinal.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private val mainViewModel: MainViewModel by viewModels()
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val btnComparar = findViewById<AppCompatButton>(R.id.btnComparar)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        //val btnComparar = findViewById<AppCompatButton>(R.id.btnComparar)
         val texto1 = findViewById<AppCompatEditText>(R.id.texto1)
         val texto2 = findViewById<AppCompatEditText>(R.id.texto2)
         val resultado = findViewById<AppCompatTextView>(R.id.resultComp)
+
+        mainViewModel.modelo.observe(this){
+//          binding.texto1.text = "${it.texto1}"
+//          binding.texto2.text = ${it.texto2}
+            binding.resultComp.text = it.resultado
+        }
+
+
 
         //IDIOMA
         val sharedPref = application.getSharedPreferences("idioma",Context.MODE_PRIVATE) ?:return
@@ -50,17 +64,12 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
 
-        btnComparar.setOnClickListener{
-            if (texto1.text.toString() == texto2.text.toString())
-                resultado.text = getString(R.string.textoigual)
-            else
-                resultado.text = getString(R.string.textodiferente)
-
-            Log.i("Comparar","Boton pulsado")
-
+        //COMPARACION DE LOS TEXTOS
+        binding.btnComparar.setOnClickListener{
+            mainViewModel.comparar(texto1.text.toString(), texto2.text.toString())
+            //TRADUCCIÓN SEGÚN EL IDIOMA
+            if (resultado.text == "iguales") resultado.text=getString(R.string.textoigual) else resultado.text=getString(R.string.textodiferente)
         }
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

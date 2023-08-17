@@ -39,13 +39,4 @@
         app:layout_constraintTop_toBottomOf="@+id/clarooscuro"
         tools:ignore="MissingConstraints" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/pruebaidioma"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text=""
-        app:layout_constraintTop_toBottomOf="@+id/guardarIdioma"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

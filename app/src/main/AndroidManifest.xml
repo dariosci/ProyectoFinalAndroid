@@ -14,14 +14,12 @@
         android:theme="@style/Theme.ProyectoFinal"
         tools:targetApi="31">
         <activity
-            android:name=".ConfigActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SettingsActivity"
+            android:name=".view.SettingsActivity"
             android:exported="false"
-            android:label="@string/title_activity_settings" />
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".view.MainActivity"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
