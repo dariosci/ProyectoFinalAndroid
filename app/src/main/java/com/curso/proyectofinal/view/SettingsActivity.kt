@@ -25,16 +25,14 @@ class SettingsActivity : AppCompatActivity() {
         val defaultValue = 0
         val idiomaGuardado = sharedPref.getInt("idioma",defaultValue)
 
-        when(idiomaGuardado) {
-            0 -> {
-                val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("es-ES")
-                AppCompatDelegate.setApplicationLocales(appLocale)
+        setTitle(R.string.title_activity_settings)
+        when(idiomaGuardado) { //APLICA EL IDIOMA GUARDADO
+            0 -> { //IDIOMA EN ESPAÑOL
+                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("es-ES"))
                 selectoridioma.setSelection(idiomaGuardado)
             }
-
-            1 -> {
-                val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("en-EN")
-                AppCompatDelegate.setApplicationLocales(appLocale)
+            1 -> { //IDIOMA EN INGLÉS
+                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en-EN"))
                 selectoridioma.setSelection(idiomaGuardado)
             }
         }
@@ -61,32 +59,28 @@ class SettingsActivity : AppCompatActivity() {
                 editor.putBoolean("night",true)
                 editor.apply()
             }
-            Toast.makeText(this,"El Modo Claro/Oscuro se guarda automáticamente",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,R.string.snap_claro_oscuro,Toast.LENGTH_SHORT).show()
         }
         //GUARDAR/APLICAR CONFIGURACIÓN DEL IDIOMA
         btn_Guardar.setOnClickListener{
             guardar(selectoridioma)
-            Toast.makeText(this,"Se ha guardado la Configuración",Toast.LENGTH_SHORT).show()
             when(selectoridioma?.selectedItem){
                 //APLICANDO IDIOMA EN INGLÉS
                 "English" -> {
-                    val appLocale : LocaleListCompat = LocaleListCompat.forLanguageTags("en-EN")
-                    AppCompatDelegate.setApplicationLocales(appLocale)
+                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en-EN"))
                 }
                 "Inglés" -> {
-                    val appLocale : LocaleListCompat = LocaleListCompat.forLanguageTags("en-EN")
-                    AppCompatDelegate.setApplicationLocales(appLocale)
+                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en-EN"))
                 }
                 //APLICANDO IDIOMA EN ESPAÑOL
                 "Español" -> {
-                    val appLocale : LocaleListCompat = LocaleListCompat.forLanguageTags("es-ES")
-                   AppCompatDelegate.setApplicationLocales(appLocale)
+                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("es-ES"))
                 }
                 "Spanish" -> {
-                    val appLocale : LocaleListCompat = LocaleListCompat.forLanguageTags("es-ES")
-                    AppCompatDelegate.setApplicationLocales(appLocale)
+                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("es-ES"))
                 }
             }
+            Toast.makeText(this,R.string.snap_configsave,Toast.LENGTH_LONG).show()
         }
     }
     @SuppressLint("SuspiciousIndentation")

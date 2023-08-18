@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -42,16 +43,13 @@ class MainActivity : AppCompatActivity() {
         val defaultValue = 0
         val idiomaGuardado = sharedPref.getInt("idioma",defaultValue)
 
-        when(idiomaGuardado) { //APLICA EL QUE CORRESPONDA
-            0 -> { //IDIOMA EN INGLÉS
-                val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("es-ES")
-                AppCompatDelegate.setApplicationLocales(appLocale)
-                //selectoridioma.setSelection(idiomaGuardado)
+        setTitle(R.string.app_name)
+        when(idiomaGuardado) { //APLICA EL IDIOMA GUARDADO
+            0 -> { //IDIOMA EN ESPAÑOL
+                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("es-ES"))
             }
-            1 -> { //IDIOMA EN ESPAÑOL
-                val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("en-EN")
-                AppCompatDelegate.setApplicationLocales(appLocale)
-                //selectoridioma.setSelection(idiomaGuardado)
+            1 -> { //IDIOMA EN INGLÉS
+                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en-EN"))
             }
         }
         //TRAE EL MODO CLARO/OSCURO GUARDADO
@@ -64,7 +62,12 @@ class MainActivity : AppCompatActivity() {
         binding.btnComparar.setOnClickListener{
             mainViewModel.comparar(texto1.text.toString(), texto2.text.toString())
             //TRADUCCIÓN SEGÚN EL IDIOMA
-            if (resultado.text == "iguales") resultado.text=getString(R.string.textoigual) else resultado.text=getString(R.string.textodiferente)
+            when(resultado.text) {
+                "iguales" -> resultado.text=getString(R.string.textoigual)
+                "diferentes" -> resultado.text=getString(R.string.textodiferente)
+                "" -> Toast.makeText(this,R.string.snap_faltandatos,
+                    Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

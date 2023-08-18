@@ -17,11 +17,12 @@
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/clarooscuro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="266dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="60dp"
         android:text="@string/claro_oscuro"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectoridioma"
         tools:ignore="MissingConstraints" />
@@ -30,7 +31,7 @@
         android:id="@+id/guardarIdioma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="60dp"
         android:text="@string/btnGuardarIdioma"
         app:layout_constraintEnd_toEndOf="parent"
 

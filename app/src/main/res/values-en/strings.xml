@@ -25,4 +25,7 @@
             <item>English</item>
         </array>
     <string name="btnGuardarIdioma">Save</string>
+    <string name="snap_faltandatos">ATTENTION! THERE ARE FIELDS WITHOUT COMPLETE</string>
+    <string name="snap_configsave">The language has been saved successfully</string>
+    <string name="snap_claro_oscuro">Light/Dark Mode is automatically saver and applied</string>
 </resources>

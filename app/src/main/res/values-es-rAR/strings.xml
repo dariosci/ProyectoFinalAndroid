@@ -25,4 +25,7 @@
             <item>Inglés</item>
         </array>
     <string name="btnGuardarIdioma">Guardar</string>
+    <string name="snap_faltandatos">ATENCIÓN! HAY CAMPOS SIN COMPLETAR</string>
+    <string name="snap_configsave">El idioma ha sido guardado correctamente</string>
+    <string name="snap_claro_oscuro">El Modo Claro/Oscuro se guarda y aplica automáticamente</string>
 </resources>

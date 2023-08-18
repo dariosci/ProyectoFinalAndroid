@@ -16,20 +16,18 @@ class MainViewModel : ViewModel() {
 //    }
 
     fun comparar(cadena1 : String, cadena2 : String) {
-
-        if ( cadena1 == cadena2) {
-            actualizarResultado("iguales")
-        } else {
-            actualizarResultado("diferentes")
+        if ((cadena1==""||cadena2=="")){ //SI ALGUNA DE LAS CADENAS ESTÁN VACIAS DEVUELVE UNA CADENA VACIA
+            actualizarResultado("")
+        }else { //SI LAS DOS CADENAS TIENEN TEXTO LAS COMPARA Y DEVUELVE EL RESULTADO COMO CADENA
+            if (cadena1 == cadena2) {
+                actualizarResultado("iguales")
+            } else {
+                actualizarResultado("diferentes")
+            }
         }
-        //actualizarResultado()
-
-
-        //Log.i("Comparar","Boton pulsado")
     }
 
-    private fun actualizarResultado (resultado: String){
-
+    private fun actualizarResultado (resultado: String){ //DEVUELVE EL RESULTADO AL MAINACTIVITY
         viewModelScope.launch {
                 _modelo.value = Modelo(resultado) }
 

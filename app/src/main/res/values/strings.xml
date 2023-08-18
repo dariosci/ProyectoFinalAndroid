@@ -24,11 +24,13 @@
     <string name="esp_eng">Spanish / English</string>
     <string name="claro_oscuro">Light Mode / Dark Mode</string>
     <string name="tema_theme">Theme</string>
-
     <string name="idiomas">Languages</string>
         <array name="idiomastodos">
             <item>Spanish</item>
             <item>English</item>
         </array>
     <string name="btnGuardarIdioma">Save</string>
+    <string name="snap_faltandatos">ATTENTION! THERE ARE FIELDS WITHOUT COMPLETE</string>
+    <string name="snap_configsave">The language has been saved successfully</string>
+    <string name="snap_claro_oscuro">Light/Dark Mode is automatically saver and applied</string>
 </resources>
