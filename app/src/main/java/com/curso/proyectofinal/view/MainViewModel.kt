@@ -8,12 +8,9 @@ import com.curso.proyectofinal.model.Modelo
 import kotlinx.coroutines.launch
 class MainViewModel : ViewModel() {
 
-    private var _modelo = MutableLiveData<Modelo>()
     val modelo: LiveData<Modelo> get() = _modelo
 
-//    init {
-//        _modelo.value = modelo
-//    }
+    private var _modelo = MutableLiveData<Modelo>(Modelo(""))
 
     fun comparar(cadena1 : String, cadena2 : String) {
         if ((cadena1==""||cadena2=="")){ //SI ALGUNA DE LAS CADENAS ESTÁN VACIAS DEVUELVE UNA CADENA VACIA
